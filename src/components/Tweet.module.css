@@ -6,6 +6,7 @@
   background: var(--background-gradient);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  border: solid 1px var(--main-color);
 }
 .logo {
   position: absolute;
@@ -38,7 +39,6 @@
   top: -40px;
   left: 150px;
   display: inline-flex;
-  /* margin-left: 150px; */
   width: 62px;
   height: 62px;
   border-radius: 50%;
@@ -60,7 +60,6 @@
 .btn {
   width: 196px;
   height: 50px;
-  /* background-color: var(--main-color); */
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 600;

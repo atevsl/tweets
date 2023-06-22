@@ -12,8 +12,6 @@ const Tweet = ({ item, onFollowHendler }) => {
   const onClickHendeler = (id) => {
     setOnFollow((prev) => !prev);
     localStorage.setItem(`onFollow${item.id}`, !onFollow);
-    console.log("in click", onFollow);
-
     onFollowHendler(id, !onFollow);
   };
 

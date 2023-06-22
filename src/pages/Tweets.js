@@ -12,10 +12,7 @@ const Tweets = () => {
   useEffect(() => {
     const getTweets = async () => {
       try {
-        console.log("запрос на page:", page, Date.now());
-
         const response = await axios.get(`/tweets?page=${page}&limit=3`);
-
         setTweets((prevdata) => [...prevdata, ...response.data]);
       } catch (error) {
         return console.log(error.message);
@@ -50,11 +47,8 @@ const Tweets = () => {
     }
   }
   return (
-    <div>
-      <Link
-        to="/"
-        //   className={css.links}
-      >
+    <div className={css.container}>
+      <Link to="/" className={css.btn}>
         Go back
       </Link>
       <ul className={css.tweetslist}>
@@ -69,9 +63,9 @@ const Tweets = () => {
       </ul>
 
       <button
+        className={css.btn}
         onClick={() => {
           setPage((prevpage) => prevpage + 1);
-          //   setTweets((prevTweets) => [...prevTweets, ...nextTweetsPage]);
         }}
       >
         Load more
