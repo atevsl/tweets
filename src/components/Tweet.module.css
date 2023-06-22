@@ -60,7 +60,7 @@
 .btn {
   width: 196px;
   height: 50px;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 600;

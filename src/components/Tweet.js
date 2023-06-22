@@ -5,7 +5,17 @@ import BoyImg from "../img/Boy.png";
 import { useState } from "react";
 
 const Tweet = ({ item, onFollowHendler }) => {
-  const [onFollow, setOnFollow] = useState(false);
+  const [onFollow, setOnFollow] = useState(
+    JSON.parse(localStorage.getItem(`onFollow${item.id}`)) || false
+  );
+
+  const onClickHendeler = (id) => {
+    setOnFollow((prev) => !prev);
+    localStorage.setItem(`onFollow${item.id}`, !onFollow);
+    console.log("in click", onFollow);
+
+    onFollowHendler(id, !onFollow);
+  };
   return (
     <li className={css.wraper}>
       <img src={LogoImg} alt="logo" className={css.logo}></img>
@@ -27,13 +37,17 @@ const Tweet = ({ item, onFollowHendler }) => {
       <p className={css.text}>{item.tweets} tweets</p>
       <p className={css.text}>{item.followers} followers</p>
       <button
+        style={
+          onFollow
+            ? { backgroundColor: "var(--accent-color)" }
+            : { backgroundColor: "var(--main-color)" }
+        }
         className={css.btn}
-        onClick={async () => {
-          await setOnFollow((prev) => !prev);
-          onFollowHendler(item.id, onFollow);
+        onClick={() => {
+          onClickHendeler(item.id);
         }}
       >
-        follow
+        {onFollow ? "following" : "follow"}
       </button>
     </li>
   );
