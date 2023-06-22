@@ -16,6 +16,11 @@ const Tweet = ({ item, onFollowHendler }) => {
 
     onFollowHendler(id, !onFollow);
   };
+
+  function followerssWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  const formattedFollowers = followerssWithCommas(item.followers);
   return (
     <li className={css.wraper}>
       <img src={LogoImg} alt="logo" className={css.logo}></img>
@@ -35,7 +40,7 @@ const Tweet = ({ item, onFollowHendler }) => {
       </div>
 
       <p className={css.text}>{item.tweets} tweets</p>
-      <p className={css.text}>{item.followers} followers</p>
+      <p className={css.text}>{formattedFollowers} followers</p>
       <button
         style={
           onFollow
