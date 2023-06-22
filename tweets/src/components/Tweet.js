@@ -2,8 +2,10 @@ import css from "./Tweet.module.css";
 import LogoImg from "../img/logo.png";
 import BckgrndImg from "../img/background.png";
 import BoyImg from "../img/Boy.png";
+import { useState } from "react";
 
 const Tweet = ({ item, onFollowHendler }) => {
+  const [onFollow, setOnFollow] = useState(false);
   return (
     <li className={css.wraper}>
       <img src={LogoImg} alt="logo" className={css.logo}></img>
@@ -26,8 +28,9 @@ const Tweet = ({ item, onFollowHendler }) => {
       <p className={css.text}>{item.followers} followers</p>
       <button
         className={css.btn}
-        onClick={() => {
-          onFollowHendler(item.id);
+        onClick={async () => {
+          await setOnFollow((prev) => !prev);
+          onFollowHendler(item.id, onFollow);
         }}
       >
         follow

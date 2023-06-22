@@ -6,6 +6,7 @@ import css from "./Tweets.module.css";
 
 const Tweets = () => {
   const [tweets, setTweets] = useState([]);
+
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -23,17 +24,27 @@ const Tweets = () => {
     getTweets();
   }, [page]);
 
-  async function onFollowHendler(id) {
+  async function onFollowHendler(id, onFollow) {
     try {
-      console.log("before", tweets);
-
       let tweetToUpd = tweets.find((el) => el.id === id);
-      tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers + 1 };
-      await axios.put(`/tweets/${id}`, tweetToUpd);
-      const indx = tweets.findIndex((el) => el.id === id);
+      if (onFollow) {
+        tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers + 1 };
+      } else
+        tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers - 1 };
 
-      setTweets(tweets.splice(indx, 1, tweetToUpd));
-      console.log(tweets);
+      await axios.put(`/tweets/${id}`, tweetToUpd);
+      setTweets((prevTweets) =>
+        prevTweets.map((tweet) => {
+          if (tweet.id === id) {
+            if (onFollow) {
+              return { ...tweet, followers: tweet.followers + 1 };
+            } else {
+              return { ...tweet, followers: tweet.followers - 1 };
+            }
+          }
+          return tweet;
+        })
+      );
     } catch (error) {
       return console.log(error.message);
     }
