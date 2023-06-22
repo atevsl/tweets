@@ -1,0 +1,8 @@
+.tweetslist {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: calc(100% / 3 - 380px);
+}

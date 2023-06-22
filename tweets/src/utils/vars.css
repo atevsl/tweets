@@ -1,0 +1,20 @@
+:root {
+  /* fonts */
+  /* --secondary-font: "Coolvetica", sans-serif; */
+
+  --main-color: #ebd8ff;
+  --accent-color: #5cd3a8;
+  --background-color: #471ca9;
+  --text-color: #373737;
+  --background-gradient: linear-gradient(#471ca9, #5736a3, #4b2a99);
+  --border-radius: 20px;
+  --shadow: -2.58px 6.87px 20.62px rgba(0, 0, 0, 0.23);
+  --shadow-line: 0px 3.44px 3.44px rgba(0, 0, 0, 0.06);
+  --shadow-inner-line-top: inset 0px 3.44px 2.58px #fbf8ff;
+  --shadow-inner-line-bottom: inset 0px -1.72px 3.44px #ae7be3;
+
+  --shadow-frame: 0px 4.39px 4.39px rgba(0, 0, 0, 0.06);
+  --shadow-inner-frame-top: inset 0px 2.2px 3.29px #ae7be3;
+  --shadow-inner-frame-bottom: inset 0px -2.2px 4.39px #ae7be3;
+  --shadow-btn: 0px 3.44px 3.44px rgba(0, 0, 0, 0.25);
+}

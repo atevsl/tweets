@@ -1,0 +1,75 @@
+.wraper {
+  width: 380px;
+  height: 460px;
+  margin-bottom: 20px;
+  position: relative;
+  background: var(--background-gradient);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 76px;
+  height: 22px;
+}
+.backgroundImg {
+  margin: 28px 36px 18px 36px;
+  display: block;
+}
+.avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+}
+.avatarLine {
+  position: relative;
+  width: 380px;
+  height: 8px;
+  margin-bottom: 62px;
+  background-color: var(--main-color);
+  box-shadow: var(--shadow-inner-line-top), var(--shadow-line),
+    var(--shadow-inner-line-bottom);
+}
+.avatarFrame {
+  position: absolute;
+  background-color: var(--background-color);
+  top: -40px;
+  left: 150px;
+  display: inline-flex;
+  /* margin-left: 150px; */
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: solid 9px var(--main-color);
+  box-shadow: var(--shadow-inner-frame-top), var(--shadow-frame),
+    var(--shadow-inner-frame-bottom);
+}
+.text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--main-color);
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.btn {
+  width: 196px;
+  height: 50px;
+  background-color: var(--main-color);
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-color);
+  border-radius: 10px;
+  border: transparent;
+  box-shadow: var(--shadow-btn);
+  display: block;
+  margin: 0 auto;
+  margin-top: 26px;
+}
