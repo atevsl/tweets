@@ -6,8 +6,12 @@ import css from "./Tweets.module.css";
 
 const Tweets = () => {
   const [tweets, setTweets] = useState([]);
-
   const [page, setPage] = useState(1);
+  const [selectedOption, setSelectedOption] = useState("show all");
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   useEffect(() => {
     const getTweets = async () => {
@@ -28,7 +32,6 @@ const Tweets = () => {
         tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers + 1 };
       } else
         tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers - 1 };
-
       await axios.put(`/tweets/${id}`, tweetToUpd);
       setTweets((prevTweets) =>
         prevTweets.map((tweet) => {
@@ -48,9 +51,23 @@ const Tweets = () => {
   }
   return (
     <div className={css.container}>
-      <Link to="/" className={css.btn}>
-        Go back
-      </Link>
+      <div className={css.headerWrap}>
+        <Link to="/" className={css.link}>
+          Go back
+        </Link>
+        <select
+          className={css.customSelect}
+          value={selectedOption}
+          onChange={handleSelectChange}
+        >
+          <option value="show all">
+            <span>show all</span>
+          </option>
+          <option value="follow">follow</option>
+          <option value="followings">followings</option>
+        </select>
+      </div>
+
       <ul className={css.tweetslist}>
         {tweets.length > 0 &&
           tweets.map((item) => (
@@ -58,6 +75,7 @@ const Tweets = () => {
               item={item}
               onFollowHendler={onFollowHendler}
               key={Math.random()}
+              selectedOption={selectedOption}
             />
           ))}
       </ul>

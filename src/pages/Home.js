@@ -25,7 +25,10 @@ const Home = () => {
   }, []);
   return (
     <div className={css.container}>
-      <div className={css.header}>we found {tweets.length} tweets for you.</div>
+      <div className={css.header}>
+        we found <span className={css.number}>{tweets.length}</span> tweets for
+        you.
+      </div>
       <Link to="/tweets" className={css.link}>
         go to tweets
       </Link>

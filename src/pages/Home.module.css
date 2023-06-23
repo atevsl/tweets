@@ -28,3 +28,25 @@
   background: var(--accent-color);
   color: var(--background-color);
 }
+.number {
+  margin: 15px;
+  box-shadow: 0 0 0 0 var(--accent-color);
+  transform: scale(1);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--accent-color);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px var(--main-color);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--background-color);
+  }
+}

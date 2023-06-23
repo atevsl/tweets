@@ -4,6 +4,9 @@
   background: var(--background-gradient);
   padding: 4px 0;
 }
+.headerWrap {
+  display: flex;
+}
 .tweetslist {
   list-style: none;
   padding: 0;
@@ -14,8 +17,9 @@
   overflow: auto;
   height: calc(100vh - 140px);
 }
-
-.btn {
+.btn,
+.link,
+.customSelect {
   text-decoration: none;
   width: 90%;
   height: 50px;
@@ -33,10 +37,17 @@
   align-items: center;
   margin: 0 auto;
 }
-.btn:hover {
+.btn:hover,
+.link:hover,
+.customSelect:hover {
   background: var(--accent-color);
   color: var(--background-color);
 }
+.link,
+.customSelect {
+  width: 40%;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }
