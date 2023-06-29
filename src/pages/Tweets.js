@@ -41,6 +41,7 @@ const Tweets = () => {
           setSelectedOption={setSelectedOption}
         />
       </div>
+      {tweets === [] && <h2>Loading...</h2>}
       <ul className={css.tweetslist}>
         {tweets.length > 0 &&
           tweets.map(item => (
