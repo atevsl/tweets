@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import css from "./Home.module.css";
 import Notiflix from "notiflix";
 
-axios.defaults.baseURL = "https://6492a0b8428c3d2035d0615f.mockapi.io/api/";
+import api from '../services/api/api'
+import css from "./Home.module.css";
+
+
 
 const Home = () => {
   const [tweets, setTweets] = useState("");
@@ -12,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const getTweets = async () => {
       try {
-        const response = await axios.get(`/tweets`);
+        const response = await api.get(`/tweets`);
         setTweets(response.data);
       } catch (error) {
         Notiflix.Notify.failure(

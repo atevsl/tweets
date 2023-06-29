@@ -1,7 +1,7 @@
 import css from "./Tweet.module.css";
-import LogoImg from "../img/logo.png";
-import BckgrndImg from "../img/background.png";
-import BoyImg from "../img/Boy.png";
+import LogoImg from "../assets/img/logo.png";
+import BckgrndImg from "../assets/img/background.png";
+import BoyImg from "../assets/img/Boy.png";
 import { useState } from "react";
 
 const Tweet = ({ item, onFollowHendler, selectedOption }) => {
@@ -57,6 +57,7 @@ const Tweet = ({ item, onFollowHendler, selectedOption }) => {
 
           <p className={css.text}>{item.tweets} tweets</p>
           <p className={css.text}>{formattedFollowers} followers</p>
+          
           <button
             style={
               onFollow

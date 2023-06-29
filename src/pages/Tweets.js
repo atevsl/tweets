@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import Tweet from "../components/Tweet";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
+import api from '../services/api/api'
+
+import Tweet from "../components/Tweet";
 import css from "./Tweets.module.css";
 
 const Tweets = () => {
@@ -16,7 +18,7 @@ const Tweets = () => {
   useEffect(() => {
     const getTweets = async () => {
       try {
-        const response = await axios.get(`/tweets?page=${page}&limit=3`);
+        const response = await api.get(`/tweets?page=${page}&limit=3`);
         setTweets((prevdata) => [...prevdata, ...response.data]);
       } catch (error) {
         return console.log(error.message);
@@ -32,7 +34,7 @@ const Tweets = () => {
         tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers + 1 };
       } else
         tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers - 1 };
-      await axios.put(`/tweets/${id}`, tweetToUpd);
+      await api.put(`/tweets/${id}`, tweetToUpd);
       setTweets((prevTweets) =>
         prevTweets.map((tweet) => {
           if (tweet.id === id) {
