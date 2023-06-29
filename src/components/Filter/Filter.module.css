@@ -1,0 +1,20 @@
+.customSelect {
+  text-decoration: none;
+  width: 90%;
+  height: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-color);
+  background: var(--main-color);
+  border-radius: 10px;
+  border: none;
+  box-shadow: var(--shadow-btn);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  cursor: pointer;
+  width: 40%;
+}

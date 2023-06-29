@@ -18,12 +18,11 @@
   height: calc(100vh - 140px);
 }
 .btn,
-.link,
-.customSelect {
+.link {
   text-decoration: none;
   width: 90%;
   height: 50px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -37,7 +36,6 @@
   align-items: center;
   margin: 0 auto;
   cursor: pointer;
-
 }
 .btn:hover,
 .link:hover,
@@ -45,8 +43,7 @@
   background: var(--accent-color);
   color: var(--background-color);
 }
-.link,
-.customSelect {
+.link {
   width: 40%;
 }
 
