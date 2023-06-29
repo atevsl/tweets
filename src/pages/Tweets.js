@@ -1,56 +1,37 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
 
-import api from '../services/api/api'
+import api from '../services/api/api';
 
-import Tweet from "../components/Tweet";
-import css from "./Tweets.module.css";
+import Tweet from '../components/Tweet/Tweet';
+import css from './Tweets.module.css';
 
 const Tweets = () => {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
-  const [selectedOption, setSelectedOption] = useState("show all");
+  const [selectedOption, setSelectedOption] = useState('show all');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSelectChange = (event) => {
+  const handleSelectChange = event => {
     setSelectedOption(event.target.value);
   };
 
-  useEffect(() => {
-    const getTweets = async () => {
-      try {
-        const response = await api.get(`/tweets?page=${page}&limit=3`);
-        setTweets((prevdata) => [...prevdata, ...response.data]);
-      } catch (error) {
-        return console.log(error.message);
-      }
-    };
-    getTweets();
-  }, [page]);
-
-  async function onFollowHendler(id, onFollow) {
+  const getTweets = useCallback(async () => {
+    setIsLoading(true);
     try {
-      let tweetToUpd = tweets.find((el) => el.id === id);
-      if (onFollow) {
-        tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers + 1 };
-      } else
-        tweetToUpd = { ...tweetToUpd, followers: tweetToUpd.followers - 1 };
-      await api.put(`/tweets/${id}`, tweetToUpd);
-      setTweets((prevTweets) =>
-        prevTweets.map((tweet) => {
-          if (tweet.id === id) {
-            if (onFollow) {
-              return { ...tweet, followers: tweet.followers + 1 };
-            } else {
-              return { ...tweet, followers: tweet.followers - 1 };
-            }
-          }
-          return tweet;
-        })
-      );
+      const response = await api.get(`/tweets?page=${page}&limit=3`);
+      setTweets(prevdata => [...prevdata, ...response.data]);
     } catch (error) {
       return console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
-  }
+  }, [page]);
+
+  useEffect(() => {
+    getTweets();
+  }, [getTweets]);
+
   return (
     <div className={css.container}>
       <div className={css.headerWrap}>
@@ -69,27 +50,30 @@ const Tweets = () => {
           <option value="followings">followings</option>
         </select>
       </div>
-
-      <ul className={css.tweetslist}>
-        {tweets.length > 0 &&
-          tweets.map((item) => (
-            <Tweet
-              item={item}
-              onFollowHendler={onFollowHendler}
-              key={Math.random()}
-              selectedOption={selectedOption}
-            />
-          ))}
-      </ul>
-
-      <button
-        className={css.btn}
-        onClick={() => {
-          setPage((prevpage) => prevpage + 1);
-        }}
-      >
-        Load more
-      </button>
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <>
+          <ul className={css.tweetslist}>
+            {tweets.length > 0 &&
+              tweets.map(item => (
+                <Tweet
+                  item={item}
+                  key={Math.random()}
+                  selectedOption={selectedOption}
+                />
+              ))}
+          </ul>
+          <button
+            className={css.btn}
+            onClick={() => {
+              setPage(prevpage => prevpage + 1);
+            }}
+          >
+            Load more
+          </button>
+        </>
+      )}
     </div>
   );
 };

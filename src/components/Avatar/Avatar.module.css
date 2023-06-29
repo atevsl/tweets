@@ -1,0 +1,27 @@
+.avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+}
+.avatarLine {
+  position: relative;
+  width: 380px;
+  height: 8px;
+  margin-bottom: 62px;
+  background-color: var(--main-color);
+  box-shadow: var(--shadow-inner-line-top), var(--shadow-line),
+    var(--shadow-inner-line-bottom);
+}
+.avatarFrame {
+  position: absolute;
+  background-color: var(--background-color);
+  top: -40px;
+  left: 150px;
+  display: inline-flex;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: solid 9px var(--main-color);
+  box-shadow: var(--shadow-inner-frame-top), var(--shadow-frame),
+    var(--shadow-inner-frame-bottom);
+}
